@@ -113,6 +113,17 @@ def create_postkit_request_body(power_amrap_wod, endurance_amrap_wod, logger):
     postkit_token = os.getenv('POSTKIT_TOKEN')
     img_size = os.getenv('IMG_SIZE')
 
+    background_imgs_urls = [
+        'https://3djungle.net/upload/resize_cache/iblock/7e4/400_400_1/7e465758f0ce0f9e8c5f796684bbcedc.jpg',
+        'https://3djungle.net/upload/resize_cache/iblock/6ae/400_400_2/6ae369212b6bf9163f579df0d9b74fbf.jpg',
+        'https://3djungle.net/upload/resize_cache/iblock/0c5/400_400_2/0c51b03a2d8526aefc3b0b4f9b4320ef.jpg',
+        'https://3djungle.net/upload/resize_cache/iblock/896/400_400_2/8965a6581124d42dad12c537b660984e.jpg',
+        'https://3djungle.net/upload/resize_cache/iblock/958/400_400_1/9583a84eac48a91cbaeb14188f006fe3.jpg',
+        'https://3djungle.net/upload/resize_cache/iblock/185/400_400_1/185870a919ae04ce2f74d79370abb054.jpg',
+        'https://3djungle.net/upload/resize_cache/iblock/b5c/400_400_1/b5cc8f2730c95926439ec05dc8a551f4.jpg'
+    ]
+    background_img_url = random.choice(background_imgs_urls)
+
     today = datetime.datetime.now()
 
     request_body = {
@@ -120,6 +131,7 @@ def create_postkit_request_body(power_amrap_wod, endurance_amrap_wod, logger):
         "token": postkit_token,
         "size": img_size,
         "params": {
+            "backgroundimage": {"background-image": "url(" + background_img_url + ")"},
             "title": {"content": "WOD " + today.strftime('%Y%m%d')},
             "powerwodcontent1": {"content": "* " + power_amrap_wod.first_exercise.print()},
             "powerwodcontent2": {"content": "* " + power_amrap_wod.second_exercise.print()},
