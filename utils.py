@@ -19,7 +19,12 @@ def get_logger():
     logs_folder_path = os.getenv('LOGS_FOLDER_PATH')
     app_name = os.getenv('APP_NAME')
 
+    if not os.path.isdir(logs_folder_path):
+        os.mkdir(logs_folder_path)
     log_file_path = logs_folder_path + '/' + app_name + '.log'
+    if not os.path.isfile(log_file_path):
+        log_file = open(log_file_path, "a")
+        log_file.close()
 
     logger = logging.getLogger(app_name)
     logger.setLevel('DEBUG')
@@ -144,7 +149,15 @@ def create_wod_image(power_amrap_wod, endurance_amrap_wod, logger):
     resulting_image = requests.post(url=postkit_endpoint, json=postkit_request_body)
     today = datetime.datetime.now()
 
-    resulting_image_path = os.getenv('IMGS_FOLDER') + '/WOD' + today.strftime('%Y%m%d') + '.png'
+    resulting_image_folder_path = os.getenv('IMGS_FOLDER')
+    resulting_image_path = resulting_image_folder_path + '/WOD' + today.strftime('%Y%m%d') + '.png'
+
+    if not os.path.isdir(resulting_image_folder_path):
+        os.mkdir(resulting_image_folder_path)
+    if not os.path.isfile(resulting_image_path):
+        log_file = open(resulting_image_path, "a")
+        log_file.close()
+
     resulting_image_file = open(resulting_image_path, "wb")
     resulting_image_file.write(resulting_image.content)
     resulting_image_file.close()
@@ -193,7 +206,8 @@ def tweet_wod(image_path, logger):
     twitter_api = twitter_login(twitter_credentials, logger)
 
     today = datetime.datetime.now()
-    locale.setlocale(locale.LC_TIME, 'es_ES')
+    # locale.setlocale(locale.LC_TIME, 'es_ES')
+    locale.setlocale(locale.LC_ALL,'es_ES.UTF-8')
     today_in_spanish = today.strftime('%A, %d de %B de %Y')
 
     adornment_list = ['jodido', 'puto']
