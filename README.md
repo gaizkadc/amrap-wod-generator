@@ -34,7 +34,7 @@ deactivate
 ## Docker
 To build the Docker image run:
 ```
-docker build docker/Dockerfile .
+docker build -f docker/Dockerfile .
 ```
 
 Or just pull it:
