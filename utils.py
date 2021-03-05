@@ -205,10 +205,13 @@ def tweet_wod(image_path, logger):
     twitter_credentials = get_twitter_credentials(logger)
     twitter_api = twitter_login(twitter_credentials, logger)
 
-    today = datetime.datetime.now()
-    # locale.setlocale(locale.LC_TIME, 'es_ES')
     locale.setlocale(locale.LC_ALL,'es_ES.UTF-8')
-    today_in_spanish = today.strftime('%A, %d de %B de %Y')
+
+    today = datetime.datetime.now()
+    day_of_the_week = today.strftime('%A')
+    day_of_the_month = today.strftime('%d').lstrip('0')
+    month = today.strftime('%B')
+    today_in_spanish = '{}, {} de {}'.format(day_of_the_week, day_of_the_month, month)
 
     adornment_list = ['jodido', 'puto']
     hashtags = '\n#crossfit #wod'
