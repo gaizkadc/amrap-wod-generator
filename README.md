@@ -20,6 +20,9 @@ To create the image, [Postkit's API](https://postkit.co/) is used. It is free up
 * `TWITTER_ACCESS_TOKEN`: your Twitter access token.
 * `TWITTER_ACCESS_TOKEN_SECRET`: your Twitter access token secret.
 
+## Resulting image example
+![wod-image](https://pbs.twimg.com/media/EvtyEcUXEAMoIJI?format=png&name=large "WOD image")
+
 ## Run it!
 ```
 virtualenv venv
