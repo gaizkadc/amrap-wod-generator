@@ -12,7 +12,8 @@ def create_wod_image(power_amrap_wod, endurance_amrap_wod, logger):
     resulting_image_folder_path = os.getenv('IMGS_FOLDER')
     resulting_img_path = resulting_image_folder_path + '/WOD' + today.strftime('%Y%m%d') + '.png'
 
-    background_path = get_background()
+    background_folder_path = 'backgrounds'
+    background_path = get_background(background_folder_path)
 
     darken_img(background_path, resulting_img_path)
 
@@ -28,8 +29,9 @@ def create_wod_image(power_amrap_wod, endurance_amrap_wod, logger):
     return resulting_img_path
 
 
-def get_background():
-    return 'backgrounds/' + random.choice(os.listdir('backgrounds'))
+def get_background(background_folder_path):
+    backgrounds = [bg for bg in os.listdir(background_folder_path) if bg.endswith(".png")]
+    return 'backgrounds/' + random.choice(backgrounds)
 
 
 def darken_img(img_path, dark_img_path):
