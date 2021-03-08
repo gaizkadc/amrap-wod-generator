@@ -19,9 +19,9 @@ def create_wod_image(power_amrap_wod, endurance_amrap_wod, logger):
     text_color = (255, 255, 255)
     title_height = 230
     write_title(today, resulting_img_path, text_color, title_height)
-    write_warmup(resulting_img_path, text_color)
-    write_power_amrap_wod(power_amrap_wod, resulting_img_path, text_color)
-    write_endurance_amrap_wod(endurance_amrap_wod, resulting_img_path, text_color)
+    write_warmup(resulting_img_path, text_color, title_height + 170)
+    write_power_amrap_wod(power_amrap_wod, resulting_img_path, text_color, title_height + 370)
+    write_endurance_amrap_wod(endurance_amrap_wod, resulting_img_path, text_color, title_height + 620)
 
     logger.info('wod image created')
 
@@ -53,77 +53,77 @@ def write_title(today, img_path, text_color, height):
     img.save(img_path)
 
 
-def write_warmup(img_path, text_color):
+def write_warmup(img_path, text_color, height):
     title_font = ImageFont.truetype('fonts/Montserrat-Medium.ttf', 30)
     body_font = ImageFont.truetype('fonts/Montserrat-Regular.ttf', 30)
 
-    title_text_position = (350, 400)
+    title_text_position = (350, height)
     title_text = 'Warmup: 15 min'
 
     img = Image.open(img_path)
     draw = ImageDraw.Draw(img)
     draw.text(title_text_position, title_text, text_color, font=title_font)
-    draw.line((0, 440, 600, 440), width=3)
+    draw.line((0, height + 40, 600, height + 40), width=3)
 
     warmup_1_text = '* 2 min Warmup'
-    warmup_1_text_position = (100, 460)
+    warmup_1_text_position = (100, height + 60)
     draw.text(warmup_1_text_position, warmup_1_text, text_color, font=body_font)
 
     warmup_2_text = '* 12 min HIIT'
-    warmup_2_text_position = (100, 510)
+    warmup_2_text_position = (100, height + 110)
     draw.text(warmup_2_text_position, warmup_2_text, text_color, font=body_font)
 
     img.save(img_path)
 
-def write_power_amrap_wod(power_amrap_wod, img_path, text_color):
+def write_power_amrap_wod(power_amrap_wod, img_path, text_color, height):
     title_font = ImageFont.truetype('fonts/Montserrat-Medium.ttf', 30)
     body_font = ImageFont.truetype('fonts/Montserrat-Regular.ttf', 30)
 
-    title_text_position = (263, 600)
+    title_text_position = (263, height)
     title_text = 'Power AMRAP: 15 min'
 
     img = Image.open(img_path)
     draw = ImageDraw.Draw(img)
     draw.text(title_text_position, title_text, text_color, font=title_font)
-    draw.line((0, 640, 600, 640), width=3)
+    draw.line((0, height + 40, 600, height + 40), width=3)
 
     pwer_1_text = '* ' + power_amrap_wod.first_exercise.print()
-    power_1_text_position = (100, 660)
+    power_1_text_position = (100, height + 60)
     draw.text(power_1_text_position, pwer_1_text, text_color, font=body_font)
 
     power_2_text = '* ' + power_amrap_wod.second_exercise.print()
-    power_2_text_position = (100, 710)
+    power_2_text_position = (100, height + 110)
     draw.text(power_2_text_position, power_2_text, text_color, font=body_font)
 
     power_3_text = '* ' + power_amrap_wod.third_exercise.print()
-    power_3_text_position = (100, 760)
+    power_3_text_position = (100, height + 160)
     draw.text(power_3_text_position, power_3_text, text_color, font=body_font)
 
     img.save(img_path)
 
 
-def write_endurance_amrap_wod(endurance_amrap_wod, img_path, text_color):
+def write_endurance_amrap_wod(endurance_amrap_wod, img_path, text_color, height):
     title_font = ImageFont.truetype('fonts/Montserrat-Medium.ttf', 30)
     body_font = ImageFont.truetype('fonts/Montserrat-Regular.ttf', 30)
 
-    title_text_position = (193, 850)
+    title_text_position = (193, height)
     title_text = 'Endurance AMRAP: 15 min'
 
     img = Image.open(img_path)
     draw = ImageDraw.Draw(img)
     draw.text(title_text_position, title_text, text_color, font=title_font)
-    draw.line((0, 890, 600, 890), width=3)
+    draw.line((0, height + 40, 600, height + 40), width=3)
 
     pwer_1_text = '* ' + endurance_amrap_wod.first_exercise.print()
-    power_1_text_position = (100, 910)
+    power_1_text_position = (100, height + 60)
     draw.text(power_1_text_position, pwer_1_text, text_color, font=body_font)
 
     power_2_text = '* ' + endurance_amrap_wod.second_exercise.print()
-    power_2_text_position = (100, 960)
+    power_2_text_position = (100, height + 110)
     draw.text(power_2_text_position, power_2_text, text_color, font=body_font)
 
     power_3_text = '* ' + endurance_amrap_wod.third_exercise.print()
-    power_3_text_position = (100, 1010)
+    power_3_text_position = (100, height + 160)
     draw.text(power_3_text_position, power_3_text, text_color, font=body_font)
 
     img.save(img_path)
