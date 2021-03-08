@@ -13,6 +13,8 @@ WORKDIR /amrap-wod-generator
 
 COPY amrap-wod-generator.py ./amrap-wod-generator.py
 COPY utils.py ./utils.py
+COPY img_utils.py ./img_utils.py
+COPY twitter_utils.py ./twitter_utils.py
 COPY AMRAPWOD.py ./AMRAPWOD.py
 COPY Exercise.py ./Exercise.py
 
