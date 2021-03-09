@@ -112,10 +112,10 @@ def get_endurance_amrap_wod(medium_exercises, easy_exercises, ccm_exercises, log
     return AMRAPWOD(first_exercise, second_exercise, third_exercise)
 
 def open_wod_img(logger, img_path):
+    logger.info('img created at {}'.format(img_path))
     logger.info('opening amrap wod img')
     if platform.system() == 'Darwin' or platform.system() == 'Linux':
         os.system('open ' + img_path)
     else:
-        logger.info('img created at {}'.format(img_path))
         logger.info('ps: get a decent os')
 
