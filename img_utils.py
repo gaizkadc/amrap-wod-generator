@@ -94,7 +94,7 @@ def write_power_amrap_wod(power_amrap_wod, img_path, text_color, height):
     body_font = ImageFont.truetype('fonts/Montserrat-Regular.ttf', 30)
 
     title_text_position = (263, height)
-    title_text = 'Power AMRAP: 15 min'
+    title_text = 'Power AMRAP: 12 min'
 
     img = Image.open(img_path)
     draw = ImageDraw.Draw(img)
