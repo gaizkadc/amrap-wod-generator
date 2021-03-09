@@ -13,13 +13,16 @@ def create_wod_image(power_amrap_wod, endurance_amrap_wod, logger):
     try:
         logger.info('retrieving imgs folder path from settings')
         import settings
-        resulting_image_folder_path = settings.IMGS_FOLDER
+        image_folder_path = settings.IMGS_FOLDER
     except ModuleNotFoundError as error:
         logger.info('unable to import settings')
         logger.info(error)
-        resulting_image_folder_path = os.getenv('IMGS_FOLDER')
+        image_folder_path = os.getenv('IMGS_FOLDER')
 
-    resulting_img_path = resulting_image_folder_path + '/WOD' + today.strftime('%Y%m%d') + '.png'
+    if not os.path.exists(image_folder_path):
+        os.makedirs(image_folder_path)
+
+    resulting_img_path = image_folder_path + '/WOD' + today.strftime('%Y%m%d') + '.png'
 
     background_folder_path = 'backgrounds'
     background_path = get_background(background_folder_path)
