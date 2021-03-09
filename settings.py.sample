@@ -1,0 +1,10 @@
+# App settings
+LOGS_FOLDER_PATH='logs'
+APP_NAME='amrap-wod-generator'
+IMGS_FOLDER='img'
+
+# Twitter settings
+TWITTER_CONSUMER_KEY='whatevconsumerkey'
+TWITTER_CONSUMER_SECRET='whatevconsumersecret'
+TWITTER_ACCESS_TOKEN='whatevaccesstoken'
+TWITTER_ACCESS_TOKEN_SECRET='whatevaccesstokensecret'

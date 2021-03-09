@@ -4,6 +4,7 @@ from AMRAPWOD import AMRAPWOD
 import csv
 import os
 import random
+import platform
 
 import logging
 from logging.handlers import RotatingFileHandler
@@ -11,8 +12,13 @@ import sys
 
 
 def get_logger():
-    logs_folder_path = os.getenv('LOGS_FOLDER_PATH')
-    app_name = os.getenv('APP_NAME')
+    try:
+        import settings
+        logs_folder_path = settings.LOGS_FOLDER_PATH
+        app_name = settings.APP_NAME
+    except ModuleNotFoundError:
+        logs_folder_path = os.getenv('LOGS_FOLDER_PATH')
+        app_name = os.getenv('APP_NAME')
 
     if not os.path.isdir(logs_folder_path):
         os.mkdir(logs_folder_path)
@@ -104,3 +110,12 @@ def get_endurance_amrap_wod(medium_exercises, easy_exercises, ccm_exercises, log
     logger.info('endurance amrap wod retrieved')
 
     return AMRAPWOD(first_exercise, second_exercise, third_exercise)
+
+def open_wod_img(logger, img_path):
+    logger.info('opening amrap wod img')
+    if platform.system() == 'Darwin' or platform.system() == 'Linux':
+        os.system('open ' + img_path)
+    else:
+        logger.info('img created at {}'.format(img_path))
+        logger.info('ps: get a decent os')
+

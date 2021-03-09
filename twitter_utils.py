@@ -8,10 +8,20 @@ import random
 def get_twitter_credentials(logger):
     logger.info('getting twitter credentials')
 
-    consumer_key = os.getenv('TWITTER_CONSUMER_KEY')
-    consumer_secret = os.getenv('TWITTER_CONSUMER_SECRET')
-    access_token = os.getenv('TWITTER_ACCESS_TOKEN')
-    access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
+    try:
+        logger.info('retrieving twitter credentials from settings')
+        import settings
+        consumer_key = settings.TWITTER_CONSUMER_KEY
+        consumer_secret = settings.TWITTER_CONSUMER_SECRET
+        access_token = settings.TWITTER_ACCESS_TOKEN
+        access_token_secret = settings.TWITTER_ACCESS_TOKEN_SECRET
+    except ModuleNotFoundError as error:
+        logger.info('unable to import settings')
+        logger.info(error)
+        consumer_key = os.getenv('TWITTER_CONSUMER_KEY')
+        consumer_secret = os.getenv('TWITTER_CONSUMER_SECRET')
+        access_token = os.getenv('TWITTER_ACCESS_TOKEN')
+        access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
 
     credentials = {
         'consumer_key': consumer_key,
@@ -37,7 +47,7 @@ def twitter_login(credentials, logger):
     return api
 
 
-def tweet_wod(image_path, logger):
+def tweet_wod(img_path, logger):
     logger.info('tweeting wod')
 
     twitter_credentials = get_twitter_credentials(logger)
@@ -52,10 +62,10 @@ def tweet_wod(image_path, logger):
     today_in_spanish = '{}, {} de {}'.format(day_of_the_week, day_of_the_month, month)
 
     adornment_list = ['jodido', 'puto']
-    hashtags = '\n#crossfit #wod'
+    hashtags = '\n#crossfit'
 
-    tweet_text = 'Mi ' + random.choice(adornment_list) + ' WOD de hoy ' + today_in_spanish + '.' + hashtags
+    tweet_text = 'Mi ' + random.choice(adornment_list) + ' #WOD de hoy ' + today_in_spanish + '.' + hashtags
 
-    twitter_api.update_with_media(image_path, status=tweet_text)
+    twitter_api.update_with_media(img_path, status=tweet_text)
 
     logger.info('wod tweeted')

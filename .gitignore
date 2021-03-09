@@ -138,10 +138,11 @@ dmypy.json
 cython_debug/
 
 # PyCharm
-.idea/
+.idea/*
 
 # MacOS
 .DS_Store
 
-# Resulting images
+# App
 img/*
+settings.py

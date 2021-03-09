@@ -9,7 +9,16 @@ def create_wod_image(power_amrap_wod, endurance_amrap_wod, logger):
     logger.info('creating wod image')
 
     today = datetime.datetime.now()
-    resulting_image_folder_path = os.getenv('IMGS_FOLDER')
+
+    try:
+        logger.info('retrieving imgs folder path from settings')
+        import settings
+        resulting_image_folder_path = settings.IMGS_FOLDER
+    except ModuleNotFoundError as error:
+        logger.info('unable to import settings')
+        logger.info(error)
+        resulting_image_folder_path = os.getenv('IMGS_FOLDER')
+
     resulting_img_path = resulting_image_folder_path + '/WOD' + today.strftime('%Y%m%d') + '.png'
 
     background_folder_path = 'backgrounds'
