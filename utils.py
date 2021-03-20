@@ -1,5 +1,4 @@
-from Exercise import Exercise
-from AMRAPWOD import AMRAPWOD
+from classes import AMRAPWOD, Exercise
 
 import csv
 import os
@@ -54,7 +53,8 @@ def parse_exercises(file_name, logger):
         exercises_file = open(file_name, 'r')
         exercises_data = csv.reader(exercises_file)
         for item in exercises_data:
-            exercise = Exercise(desc=item[0], type=item[1], logger=logger)
+            amount = parse_amount(logger, item[3])
+            exercise = Exercise(desc=item[0], type=item[1], units=item[2], amount=amount, logger=logger)
             exercises.append(exercise)
     except:
         logger.error('something went wrong')
@@ -63,6 +63,10 @@ def parse_exercises(file_name, logger):
 
     return exercises
 
+
+def parse_amount(logger, possible_amounts):
+    logger.info('parsing possible amounts')
+    return random.choice(possible_amounts.split('/'))
 
 def get_exercises_by_type(exercises, logger):
     logger.info('getting exercises by type')

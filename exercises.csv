@@ -1,38 +1,38 @@
-Thruster,Hard
-Deadlift,Hard
-Pull-Up,Hard
-Snatch,Hard
-Power Snatch,Hard
-Clean,Hard
-Power Clean,Hard
-DBall clean,Medium
-DB Step over Box,Medium
-C2B,Medium
-T2B,Medium
-Muscle-Up,Medium
-Goblet Squat,Medium
-Single-Arm OH Squat,Medium
-Kettlebell Swing,Medium
-Front Squat,Medium
-Back Squat,Medium
-HSPU,Medium
-Shoulder to OH,Medium
-OH Squat,Medium
-Single-Leg Deadlift,Medium
-Burpee Squat Press,Medium
-DB Lunge,Medium
-Single-Arm OH DB Lunge,Medium
-Wall Ball,Easy
-Box Jump,Easy
-Burpee Box Jump-Over,Easy
-Sit-Up,Easy
-Butterfly Sit-Up,Easy
-Burpee,Easy
-Lunge,Easy
-SkiErg,Machine
-Row,Machine
-Run,Machine
-Wall Sit,Calisthenics
-Farmer's Walk,Calisthenics
-Jump Rope,Cardio
-DU,Cardio
+Thruster,Hard,reps,4/6/8/10
+Deadlift,Hard,reps,4/6/8/10
+Pull-Up,Hard,reps,8/10/15
+Snatch,Hard,reps,4/6/8
+Power Snatch,Hard,reps,4/6/8
+Clean,Hard,reps,4/6/8
+Power Clean,Hard,reps,4/6/8
+DBall clean,Medium,reps,8/10/15
+DB Step over Box,Medium,reps,10/16
+C2B,Medium,reps,8/10/15
+T2B,Medium,reps,8/10/15
+Muscle-Up,Medium,reps,5/6/8/10
+Goblet Squat,Medium,reps,4/8/10/15
+Single-Arm OH Squat,Medium,reps,8/10/16
+Kettlebell Swing,Medium,reps,8/10/15
+Front Squat,Medium,reps,4/6/8/10
+Back Squat,Medium,reps,4/6/8/10
+HSPU,Medium,reps,4/6/8/10
+Shoulder to OH,Medium,reps,8/10/15
+OH Squat,Medium,reps,4/6/8
+Single-Leg Deadlift,Medium,reps,8/10/16
+Burpee Squat Press,Medium,reps,6/8/10
+DB Lunge,Medium,reps,8/10/16
+Single-Arm OH DB Lunge,Medium,reps,8/10/16
+Wall Ball,Easy,reps,5/10/15
+Box Jump,Easy,reps,10/15/20
+Burpee Box Jump-Over,Easy,reps,8/10/16
+Sit-Up,Easy,reps,10/15/20
+Abmat Sit-Up,Easy,reps,10/15/20
+Burpee,Easy,reps,10/15/20
+Lunge,Easy,reps,10/16/20
+SkiErg,Machine,cal,20/30
+Row,Machine,cal,20/30
+Run,Machine,cal,20/30
+Wall Sit,Calisthenics,sec,15/30
+Farmer's Walk,Medium,walks,8/10/15
+Jump Rope,Cardio,jumps,50
+DU,Cardio,DUs,25/50
